@@ -1,4 +1,5 @@
-**Q1. Who made ReactJS and when?**
+### **Q1. Who made ReactJS and when?**
+
 **Ans:**
 
 * Made by Jordan Walke (Facebook engineer)
@@ -7,7 +8,8 @@
 
 ---
 
-**Q2. What are the main features of ReactJS?**
+### **Q2. What are the main features of ReactJS?**
+
 **Ans:**
 
 * JSX (HTML in JS)
@@ -18,7 +20,8 @@
 
 ---
 
-**Q3. What are the benefits of using ReactJS?**
+### **Q3. What are the benefits of using ReactJS?**
+
 **Ans:**
 
 * Fast performance
