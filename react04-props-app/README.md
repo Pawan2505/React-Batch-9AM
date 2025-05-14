@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+### **Props in React**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Props are **properties** passed from the **parent** component to a **child** component. They allow data to flow from one component to another.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### **1. What Are Props?**
 
-### `npm start`
+* **Props** are like **attributes** or **input values** that we send to components.
+* They help pass **data from the parent to child components**.
+* Props are **read-only**, which means we can't modify them in the child component.
+* Think of props like **arguments to a function**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> Example: If you want to pass your **name** and **age** to a component, you do it like this:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```js
+<Greet username="Pawan Maurya" age="29" />
+```
 
-### `npm test`
+In this example:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* `username="Pawan Maurya"` → This is a prop called **username**.
+* `age="29"` → This is a prop called **age**.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **2. Passing and Using Props in Components**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To use props in a component, we need to **pass them from the parent** and **use them in the child**.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### **Parent Component Example:**
 
-### `npm run eject`
+```js
+const App = () => {
+  let username = "Pawan Maurya";
+  let age = 29;
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  return <Greet username={username} age={age} />;
+};
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### **Child Component Example:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```js
+const Greet = (props) => {
+  return <h1>Hello, {props.username}. You are {props.age} years old.</h1>;
+};
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+### **3. Using Destructuring in Props**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Instead of accessing props like `props.username` and `props.age`, we can **destructure** them to make the code cleaner and easier to read.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+const Greet = ({ username, age }) => {
+  return <h1>Hello, {username}. You are {age} years old.</h1>;
+};
+```
 
-### Code Splitting
+This way, we don’t need to use `props.username` and `props.age`; we can just use `username` and `age` directly.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### **4. Passing an Array as Props**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+You can also **pass arrays** as props to components.
 
-### Making a Progressive Web App
+#### **Parent Component:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```js
+const App = () => {
+  const fruits = ["Apple", "Banana", "Orange"];
 
-### Advanced Configuration
+  return <ArrayProps fruits={fruits} />;
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### **Child Component:**
 
-### Deployment
+```js
+const ArrayProps = ({ fruits }) => {
+  return (
+    <div>
+      <h1>Fruits List</h1>
+      {fruits.map((fruit, index) => (
+        <li key={index}>{fruit}</li>
+      ))}
+    </div>
+  );
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+### **5. Note:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Props are a way to pass **dynamic data** to your components.
+* They help components **stay flexible** and reusable.
+* Props are **read-only**; if you need to update data, use **state**.
+
+### **Watch the video to learn more about Props and State**:
+
+For a detailed explanation and more examples, check out this video:
+
+[Props and State in React](https://drive.google.com/file/d/1MAaZhCEubcZEHFB2-LOUdgIsifvxW3-M/view?usp=sharing)
+
